@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <title>InformacjaMS</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Styl nagłówka z datą obok */
+    .header-container {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .header-container h1 {
+      text-transform: uppercase;
+      margin: 0;
+      font-size: 2.5em;
+    }
+    .header-container .date {
+      font-size: 0.8em;
+      color: #555;
+      margin-top: 6px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header-container">
+    <h1>Testowa Wersja Tymbarka</h1>
+    <div class="date">25.05.2025</div>
+  </div>
+
+  <!-- Twój przycisk pobierania -->
+  <button id="downloadBtn">Tymbark - Test</button>
+
+  <script src="script.js"></script>
+
+  <script>
+    document.getElementById('downloadBtn').addEventListener('click', function() {
+      const fileUrl = 'Tymbark-Testowa.rar';
+      const a = document.createElement('a');
+      a.href = fileUrl;
+      a.download = 'Tymbark-Testowa.rar';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    });
+  </script>
+</body>
+</html>
