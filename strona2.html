@@ -3,16 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Strona 2</title>
+  <title>Biuro Rekrutacji PKS Ujazd</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       margin: 0;
-      padding: 40px;
-      background-color: #f2f2f2;
-      color: #333;
+      padding-top: 110px;
+      background-color: #f9f9f9;
+      color: #222;
     }
 
+    /* Przycisk powrotu */
     .button-container {
       position: fixed;
       top: 10px;
@@ -31,9 +32,33 @@
       box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     }
 
+    /* Pasek z napisem */
+    .top-bar {
+      position: fixed;
+      top: 50px;
+      left: 0;
+      width: 100%;
+      background-color: black;
+      color: #FFD700;
+      font-size: 24px;
+      text-align: center;
+      padding: 6px 0;
+      z-index: 999;
+    }
+
+    /* Zegarek */
+    .clock-container {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      z-index: 10000;
+    }
+
+    /* Zawartość strony */
     .content {
       max-width: 800px;
-      margin: 100px auto 0 auto;
+      margin: 50px auto;
+      padding: 20px;
       text-align: center;
     }
 
@@ -54,10 +79,22 @@
     <button onclick="window.location.href='index.html'">⬅️ Wróć do strony głównej</button>
   </div>
 
-  <!-- Zawartość strony -->
+  <!-- Zegarek -->
+  <div class="clock-container">
+    <iframe src="https://free.timeanddate.com/clock/i9w48ucd/n1453/tlpl31/fn12/fs28/fcfff/tc22d/ftb/bls0/brs0/bts4/btc00b" 
+            frameborder="0" width="141" height="35"></iframe>
+  </div>
+
+  <!-- Pasek z napisem -->
+  <div class="top-bar">
+    <marquee behavior="scroll" direction="left">Biuro rekrutacji PKS Ujazd</marquee>
+  </div>
+
+  <!-- Treść strony -->
   <div class="content">
-    <h1>Witaj na drugiej stronie!</h1>
-    <p>Możesz tutaj dodać inne informacje, zdjęcia lub co tylko chcesz 🙂</p>
+    <h1>Witamy w Biurze Rekrutacji PKS Ujazd</h1>
+    <p>Chcesz dołączyć do naszej firmy? 🚍</p>
+    <p>Skontaktuj się z administracją lub prześlij zgłoszenie na Discordzie.</p>
   </div>
 
 </body>
