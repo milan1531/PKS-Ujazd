@@ -8,65 +8,49 @@
     :root {
       --yellow: #FFD700;
       --bg: #0b0b0b;
-      --card: #151515;
-      --text: #eaeaea;
-      --muted: #bdbdbd;
-      --shadow: 0 1px 4px rgba(0,0,0,.1);
+      --text: #000;
     }
 
-    * { box-sizing: border-box; }
-    html, body { height: 100%; margin: 0; font-family: Arial, sans-serif; background: var(--bg); color: var(--text); }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Arial, sans-serif; background: var(--bg); color: var(--text); }
 
-    /* --- Górny pasek --- */
+    /* --- Prosty górny pasek jak na RadioGlazów --- */
     .topbar {
-      position: sticky;
-      top: 0;
       width: 100%;
-      background: var(--yellow);
+      background-color: var(--yellow);
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 10px 20px;
       font-weight: bold;
-      color: black;
-      box-shadow: var(--shadow);
+      color: var(--text);
+      box-shadow: none;
     }
 
-    .topbar-left { display: flex; align-items: center; gap: 20px; }
     .brand { font-size: 16px; text-transform: uppercase; }
-    .tabs { display: flex; gap: 10px; }
-    .tab { background: rgba(0,0,0,.1); padding: 6px 12px; border-radius: 8px; cursor: pointer; transition: background .2s; }
-    .tab:hover, .tab.active { background: rgba(0,0,0,.3); }
+
+    .tabs { display: flex; gap: 15px; }
+    .tab { cursor: pointer; }
+    .tab.active { text-decoration: underline; }
 
     .clock { font-variant-numeric: tabular-nums; }
 
     main { max-width: 1100px; margin: 30px auto; padding: 0 16px; }
-    .card { background: var(--card); padding: 20px; border-radius: 12px; box-shadow: var(--shadow); }
-    h1 { margin-top: 0; }
-
-    @media (max-width: 560px) {
-      .tabs { display: none; }
-      .brand { font-size: 14px; }
-    }
   </style>
 </head>
 <body>
 
 <header class="topbar">
-  <div class="topbar-left">
-    <div class="brand">PKS Ujazd</div>
-    <div class="tabs">
-      <div class="tab active">Strona Główna</div>
-    </div>
+  <div class="brand">PKS Ujazd</div>
+  <div class="tabs">
+    <div class="tab active">Strona Główna</div>
   </div>
   <div class="clock" id="clock">--:--:--</div>
 </header>
 
 <main>
-  <section class="card">
-    <h1>Witaj na stronie PKS Ujazd!</h1>
-    <p>To jest przykładowa strona z żółtym paskiem nawigacyjnym w stylu strony RadioGlazów.</p>
-  </section>
+  <h1>Witaj na stronie PKS Ujazd!</h1>
+  <p>Prosty pasek nawigacyjny w stylu RadioGlazów, żółty, bez cieni, z napisem PKS Ujazd.</p>
 </main>
 
 <script>
