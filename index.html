@@ -1,118 +1,195 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>PKS Ujazd</title>
+  <title>Strona Główna</title>
   <style>
+    :root {
+      --red: #d90429;       /* intensywny czerwony */
+      --red-dark: #b10322;  /* ciemniejszy na hover */
+      --bg: #0b0b0b;        /* tło strony */
+      --card: #151515;      /* tła kart/sekcji */
+      --text: #eaeaea;      /* tekst główny */
+      --muted: #bdbdbd;     /* tekst pomocniczy */
+      --shadow: 0 8px 24px rgba(0,0,0,.25);
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+
     body {
-      font-family: Arial, sans-serif;
-      margin: 30px;
-      background-color: #f9f9f9;
-      color: #222;
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", "Apple Color Emoji", "Segoe UI Emoji";
+      color: var(--text);
+      background: radial-gradient(1200px 800px at 10% -10%, rgba(217,4,41,.25), transparent 50%),
+                  radial-gradient(1000px 600px at 110% -20%, rgba(217,4,41,.18), transparent 50%),
+                  var(--bg);
     }
-    .clock-container {
-      position: fixed;
-      top: 10px;
-      right: 10px;
-      z-index: 9999;
-    }
-    .container {
-      display: flex;
-      gap: 40px;
-      flex-wrap: wrap;
-      align-items: flex-start;
-    }
-    .images {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      max-width: 400px;
-    }
-    .images img {
+
+    /* --- Górny pasek --- */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
       width: 100%;
-      border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      background: linear-gradient(180deg, #f22 0%, var(--red) 60%, #a8031e 100%);
+      color: white;
+      box-shadow: var(--shadow);
     }
-    .text {
-      max-width: 600px;
-    }
-    .text h2 {
-      font-size: 2em;
-      margin-top: 0;
-    }
-    .text p {
-      font-size: 1.1em;
-      line-height: 1.6;
-    }
-    .text b {
-      font-weight: bold;
-    }
-    ul {
-      margin-top: 15px;
-      font-size: 1.05em;
-      padding-left: 20px;
-    }
-    /* Styl przycisków */
-    .button-container {
-      margin-bottom: 20px;
+    .topbar-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 10px 16px;
       display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    /* Lewa strona: zakładki */
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex: 1 1 auto;
+    }
+
+    .brand {
+      font-weight: 800;
+      letter-spacing: .3px;
+      text-transform: uppercase;
+      font-size: 14px;
+      padding: 6px 10px;
+      border-radius: 14px;
+      background: rgba(255,255,255,.12);
+      backdrop-filter: blur(4px);
+    }
+
+    .tabs {
+      margin-left: 6px;
+      display: flex;
+      gap: 6px;
+    }
+
+    .tab {
+      appearance: none;
+      border: 0;
+      background: rgba(255,255,255,.08);
+      color: white;
+      padding: 8px 12px;
+      border-radius: 10px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: transform .08s ease, background .15s ease;
+    }
+
+    .tab:hover { background: rgba(255,255,255,.16); }
+    .tab:active { transform: translateY(1px); }
+    .tab.active { background: white; color: #111; }
+
+    /* Prawa strona: zegar */
+    .clock {
+      margin-left: auto;
+      font-variant-numeric: tabular-nums;
+      font-weight: 700;
+      letter-spacing: .2px;
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
       gap: 10px;
     }
-    .button-container button {
-      background-color: #FFD700;
-      border: none;
-      padding: 10px 20px;
-      font-size: 18px;
-      font-weight: bold;
-      color: black;
-      cursor: pointer;
-      border-radius: 6px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-      transition: background-color 0.3s ease;
+    .clock-dot { opacity: .6; }
+
+    /* --- Treść strony --- */
+    main {
+      max-width: 1100px;
+      margin: 24px auto;
+      padding: 0 16px 40px;
     }
-    .button-container button:hover {
-      background-color: #e6c200;
+
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      padding: 22px;
+    }
+
+    h1 { margin: 0 0 6px; font-size: 28px; }
+    p { margin: 0; color: var(--muted); }
+
+    /* Drobna responsywność */
+    @media (max-width: 560px) {
+      .brand { display: none; }
+      .clock { font-size: 14px; }
+      .tab { padding: 8px 10px; }
     }
   </style>
 </head>
 <body>
+  <!-- Pasek u góry -->
+  <header class="topbar" role="banner">
+    <div class="topbar-inner">
+      <nav aria-label="Główna nawigacja">
+        <div class="brand" aria-hidden="true">Twoja strona</div>
+        <div class="tabs" role="tablist">
+          <button class="tab active" role="tab" aria-selected="true">Strona Główna</button>
+          <!-- kolejne zakładki dodasz tutaj -->
+        </div>
+      </nav>
 
-  <div class="clock-container">
-    <iframe src="https://free.timeanddate.com/clock/i9w48ucd/n1453/tlpl31/fn12/fs28/fcfff/tc22d/ftb/bls0/brs0/bts4/btc00b" 
-            frameborder="0" width="141" height="35"></iframe>
-  </div>
-
-  <div class="container">
-    <div class="images">
-      <img src="zdjecie1.png" alt="Zdjęcie 1" />
-      <img src="zdjecie2.png" alt="Zdjęcie 2" />
-    </div>
-
-    <div class="text">
-      <!-- Przycisk nad napisem "O Nas" -->
-      <div class="button-container">
-        <button onclick="window.location.href='strona2.html'">Biuro Rekrutacji</button>
-        <button onclick="window.location.href='panel-kierowcy.html'">Panel Kierowcy</button>
+      <div class="clock" aria-live="polite" title="Bieżąca data i godzina">
+        <span id="clock-date">—</span>
+        <span class="clock-dot">•</span>
+        <span id="clock-time">—</span>
       </div>
-
-      <h2>O Nas</h2>
-      <p><b>PKS Ujazd</b> to wirtualna firma komunikacyjna, która działa w grze Roblox. Inspirowana gminą Ujazd w prawdziwym życiu. Naszym celem jest połączenie klimatu prawdziwej wiejskiej komunikacji z luźniejszym, kreatywnym podejściem do rozgrywki.</p>
-
-      <p>Ujazd znajduje się w świętokrzyskim, położony obok miasta Iwaniska, która od 2022 r. dostała prawa miejskie.</p>
-
-      <p><b>Co Oferujemy:</b></p>
-      <ul>
-        <li>🚌 Miłą Administrację i Kierowców</li>
-        <li>⚽ Linie wzorowane na prawdziwym życiu</li>
-        <li>🟩 Prawdziwy tabor</li>
-        <li>✔️ Możliwość dołączenia do firmy jako kierowca i możliwość awansów</li>
-        <li>🚍 Przystanki, mapa i tym podobne są wzorowane na prawdziwym życiu</li>
-      </ul>
-
-      <p>I nieważne czy jesteś fanem komunikacji miejskiej czy szukasz dobrej gry — PKS Ujazd jest dla Ciebie!</p>
     </div>
-  </div>
+  </header>
 
+  <!-- Treść -->
+  <main>
+    <section class="card">
+      <h1>Witaj na stronie!</h1>
+      <p>Na górze masz czerwony pasek z zakładką po lewej i zegarem z datą oraz sekundami po prawej. Daj znać, co dodać dalej 😊</p>
+    </section>
+  </main>
+
+  <script>
+    (function() {
+      const elDate = document.getElementById('clock-date');
+      const elTime = document.getElementById('clock-time');
+
+      function updateClock() {
+        const now = new Date();
+        // Pełna data po polsku, np. "sobota, 16 sierpnia 2025"
+        const dateStr = new Intl.DateTimeFormat('pl-PL', {
+          weekday: 'long',
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric'
+        }).format(now);
+
+        // Czas 24h z sekundami, np. "14:05:09"
+        const timeStr = new Intl.DateTimeFormat('pl-PL', {
+          hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false
+        }).format(now);
+
+        elDate.textContent = dateStr;
+        elTime.textContent = timeStr;
+      }
+
+      updateClock();
+      setInterval(updateClock, 1000);
+
+      // (opcjonalnie) zapamiętanie aktywnej zakładki w przyszłości
+      document.querySelectorAll('.tab').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          // tutaj w przyszłości można przełączać widoki treści
+        });
+      });
+    })();
+  </script>
 </body>
 </html>
