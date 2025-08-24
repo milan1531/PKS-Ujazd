@@ -12,6 +12,7 @@
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
+
     body { font-family: Arial, sans-serif; background: var(--bg); color: var(--text); }
 
     /* --- Prosty górny pasek jak na RadioGlazów --- */
@@ -30,12 +31,10 @@
     .brand { font-size: 16px; text-transform: uppercase; }
 
     .tabs { display: flex; gap: 15px; }
-    .tab { cursor: pointer; }
-    .tab.active { text-decoration: underline; }
+    .tab a { text-decoration: none; color: var(--text); }
+    .tab.active a { text-decoration: underline; }
 
     .clock { font-variant-numeric: tabular-nums; }
-
-    main { max-width: 1100px; margin: 30px auto; padding: 0 16px; }
   </style>
 </head>
 <body>
@@ -43,15 +42,11 @@
 <header class="topbar">
   <div class="brand">PKS Ujazd</div>
   <div class="tabs">
-    <div class="tab active">Strona Główna</div>
+    <div class="tab active"><a href="index.html">Strona Główna</a></div>
+    <div class="tab"><a href="system-stafff.html">System Stafff</a></div>
   </div>
   <div class="clock" id="clock">--:--:--</div>
 </header>
-
-<main>
-  <h1>Witaj na stronie PKS Ujazd!</h1>
-  <p>Prosty pasek nawigacyjny w stylu RadioGlazów, żółty, bez cieni, z napisem PKS Ujazd.</p>
-</main>
 
 <script>
   function updateClock() {
@@ -65,4 +60,3 @@
 
 </body>
 </html>
-
