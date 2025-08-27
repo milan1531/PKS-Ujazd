@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>System Staff - PKS Ujazd</title>
+  <title>PKS Ujazd - Strona Główna</title>
   <style>
     :root {
       --yellow: #FFD700;
@@ -15,7 +15,6 @@
 
     body { font-family: Arial, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
 
-    /* --- Pasek górny --- */
     .topbar {
       width: 100%;
       background-color: var(--yellow);
@@ -28,46 +27,16 @@
     }
 
     .brand { font-size: 16px; text-transform: uppercase; }
-
     .tabs { display: flex; gap: 15px; }
     .tab a { text-decoration: none; color: var(--text); }
     .tab.active a { text-decoration: underline; }
 
-    .clock { font-variant-numeric: tabular-nums; }
+    main { padding: 20px; max-width: 700px; margin: auto; text-align: center; }
 
-    main { padding: 20px; max-width: 500px; margin: auto; text-align: center; }
-
-    h1 { margin-bottom: 20px; }
-
-    form { display: flex; flex-direction: column; gap: 15px; }
-
-    input {
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      font-size: 14px;
-    }
-
-    button {
-      background: var(--yellow);
-      color: var(--text);
-      border: none;
-      padding: 10px;
-      border-radius: 8px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    button:hover {
-      opacity: 0.9;
-    }
-
-    /* Obrazy pod sobą w main */
-    main img {
+    img {
       display: block;
-      width: 100%;       /* obrazy dopasowane do szerokości kontenera */
-      max-width: 400px;  /* maksymalna szerokość obrazów */
-      margin: 10px auto; /* odstęp między obrazami i wyśrodkowanie */
+      max-width: 100%;
+      margin: 10px auto;
     }
   </style>
 </head>
@@ -76,62 +45,21 @@
 <header class="topbar">
   <div class="brand">PKS Ujazd</div>
   <div class="tabs">
-    <div class="tab"><a href="index.html">Strona Główna</a></div>
-    <div class="tab active"><a href="staff.html">System Staff</a></div>
+    <div class="tab active"><a href="index.html">Strona Główna</a></div>
+    <div class="tab"><a href="staff.html">System Staff</a></div>
     <div class="tab"><a href="rekrutacja.html">Biuro Rekrutacji</a></div>
   </div>
-  <div class="clock" id="clock">--:--:--</div>
 </header>
 
-<main id="login-page">
-  <h1>System Staff</h1>
+<main>
+  <h1>Witamy na stronie PKS Ujazd</h1>
+  <p>To jest strona główna firmy.</p>
 
-  <form onsubmit="return checkLogin(event)">
-    <input type="email" id="email" placeholder="Adres Email" required />
-    <input type="password" id="password" placeholder="Hasło" required />
-    <button type="submit">Zaloguj</button>
-  </form>
-
-  <p id="message" style="margin-top:15px; font-weight:bold;"></p>
-</main>
-
-<main id="staff-page" style="display:none;">
-  <h1>Strona STAFF</h1>
-  <p>Witaj w panelu systemu Staff!</p>
   <!-- Przykładowe obrazy -->
   <img src="obraz1.jpg" alt="Obraz 1">
   <img src="obraz2.jpg" alt="Obraz 2">
   <img src="obraz3.jpg" alt="Obraz 3">
 </main>
-
-<script>
-  function updateClock() {
-    const now = new Date();
-    const time = now.toLocaleTimeString('pl-PL', { hour12: false });
-    document.getElementById('clock').textContent = time;
-  }
-  setInterval(updateClock, 1000);
-  updateClock();
-
-  function checkLogin(event) {
-    event.preventDefault();
-    const email = document.getElementById('email').value;
-    const pass = document.getElementById('password').value;
-    const msg = document.getElementById('message');
-
-    if (email === "staff@pks-ujazd.pl" && pass === "ostaffu133") {
-      msg.style.color = "green";
-      msg.textContent = "✅ Zalogowano pomyślnie!";
-
-      // Ukryj formularz i pokaż stronę STAFF
-      document.getElementById('login-page').style.display = 'none';
-      document.getElementById('staff-page').style.display = 'block';
-    } else {
-      msg.style.color = "red";
-      msg.textContent = "❌ Błędny email lub hasło!";
-    }
-  }
-</script>
 
 </body>
 </html>
