@@ -19,17 +19,24 @@
       width: 100%;
       background-color: var(--yellow);
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
       padding: 10px 20px;
       font-weight: bold;
       color: var(--text);
+      position: relative;
     }
 
-    .brand { font-size: 16px; text-transform: uppercase; }
     .tabs { display: flex; gap: 15px; }
     .tab a { text-decoration: none; color: var(--text); }
     .tab.active a { text-decoration: underline; }
+
+    .clock {
+      position: absolute;
+      left: 20px;
+      font-size: 16px;
+      font-weight: bold;
+    }
 
     main { padding: 20px; max-width: 700px; margin: auto; text-align: center; }
 
@@ -43,7 +50,7 @@
 <body>
 
 <header class="topbar">
-  <div class="brand">PKS Ujazd</div>
+  <div class="clock" id="clock"></div>
   <div class="tabs">
     <div class="tab active"><a href="index.html">Strona Główna</a></div>
     <div class="tab"><a href="staff.html">System Staff</a></div>
@@ -56,10 +63,21 @@
   <p>To jest strona główna firmy.</p>
 
   <!-- Przykładowe obrazy -->
-  <img src="obraz1.jpg" alt="Obraz 1">
-  <img src="obraz2.jpg" alt="Obraz 2">
-  <img src="obraz3.jpg" alt="Obraz 3">
+  <img src="zdjecie1.png" alt="Obraz 1">
+  <img src="zdjecie2.png" alt="Obraz 2">
 </main>
+
+<script>
+  function updateClock() {
+    const now = new Date();
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    const seconds = String(now.getSeconds()).padStart(2, '0');
+    document.getElementById('clock').textContent = hours + ':' + minutes + ':' + seconds;
+  }
+  setInterval(updateClock, 1000);
+  updateClock(); // uruchomienie od razu
+</script>
 
 </body>
 </html>
