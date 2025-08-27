@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>PKS Ujazd</title>
+  <title>System Staff - PKS Ujazd</title>
   <style>
     :root {
       --yellow: #FFD700;
@@ -35,26 +35,40 @@
 
     .clock { font-variant-numeric: tabular-nums; }
 
-    main { padding: 20px; max-width: 900px; margin: auto; }
+    main { padding: 20px; max-width: 500px; margin: auto; text-align: center; }
 
-    h1, h2 { margin-bottom: 10px; }
-    ul { margin-left: 20px; margin-bottom: 20px; }
+    h1 { margin-bottom: 20px; }
 
-    .images { display: flex; gap: 20px; margin: 20px 0; }
-    .images img { max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.2); }
+    form { display: flex; flex-direction: column; gap: 15px; }
 
-    .discord { margin-top: 30px; }
-    .discord a { 
-      display: inline-block;
+    input {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+
+    button {
       background: var(--yellow);
       color: var(--text);
-      padding: 10px 15px;
+      border: none;
+      padding: 10px;
       border-radius: 8px;
       font-weight: bold;
-      text-decoration: none;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      cursor: pointer;
     }
-    .discord a:hover { opacity: 0.9; }
+
+    button:hover {
+      opacity: 0.9;
+    }
+
+    /* Obrazy pod sobą w main */
+    main img {
+      display: block;
+      width: 100%;       /* obrazy dopasowane do szerokości kontenera */
+      max-width: 400px;  /* maksymalna szerokość obrazów */
+      margin: 10px auto; /* odstęp między obrazami i wyśrodkowanie */
+    }
   </style>
 </head>
 <body>
@@ -62,41 +76,32 @@
 <header class="topbar">
   <div class="brand">PKS Ujazd</div>
   <div class="tabs">
-    <div class="tab active"><a href="index.html">Strona Główna</a></div>
-    <div class="tab"><a href="staff.html">System Staff</a></div>
+    <div class="tab"><a href="index.html">Strona Główna</a></div>
+    <div class="tab active"><a href="staff.html">System Staff</a></div>
     <div class="tab"><a href="rekrutacja.html">Biuro Rekrutacji</a></div>
   </div>
   <div class="clock" id="clock">--:--:--</div>
 </header>
 
-<main>
-  <h1>PKS Ujazd</h1>
+<main id="login-page">
+  <h1>System Staff</h1>
 
-  <div class="images">
-    <img src="zdjecie1.png" alt="Zdjęcie PKS Ujazd 1">
-    <img src="zdjecie2.png" alt="Zdjęcie PKS Ujazd 2">
-  </div>
+  <form onsubmit="return checkLogin(event)">
+    <input type="email" id="email" placeholder="Adres Email" required />
+    <input type="password" id="password" placeholder="Hasło" required />
+    <button type="submit">Zaloguj</button>
+  </form>
 
-  <h2>Co Oferujemy?</h2>
-  <ul>
-    <li>🔹 | Dobrą Administrację</li>
-    <li>🔹 | Ładną mapę</li>
-    <li>🔹 | Autorskie autobusy</li>
-    <li>🔹 | Gra się ciągle rozwija</li>
-    <li>🔹 | Dobrych Kierowców</li>
-  </ul>
+  <p id="message" style="margin-top:15px; font-weight:bold;"></p>
+</main>
 
-  <h2>Kogo Szukamy?</h2>
-  <ul>
-    <li>🔹 | Mediów</li>
-    <li>🔹 | Aktywnych Graczy</li>
-    <li>🔹 | Nowych członków administracji</li>
-    <li>🔹 | I Ciebie!</li>
-  </ul>
-
-  <div class="discord">
-    <a href="https://discord.gg/2qAJE64t37" target="_blank">🌐 Dołącz do naszego Discorda</a>
-  </div>
+<main id="staff-page" style="display:none;">
+  <h1>Strona STAFF</h1>
+  <p>Witaj w panelu systemu Staff!</p>
+  <!-- Przykładowe obrazy -->
+  <img src="obraz1.jpg" alt="Obraz 1">
+  <img src="obraz2.jpg" alt="Obraz 2">
+  <img src="obraz3.jpg" alt="Obraz 3">
 </main>
 
 <script>
@@ -107,6 +112,25 @@
   }
   setInterval(updateClock, 1000);
   updateClock();
+
+  function checkLogin(event) {
+    event.preventDefault();
+    const email = document.getElementById('email').value;
+    const pass = document.getElementById('password').value;
+    const msg = document.getElementById('message');
+
+    if (email === "staff@pks-ujazd.pl" && pass === "ostaffu133") {
+      msg.style.color = "green";
+      msg.textContent = "✅ Zalogowano pomyślnie!";
+
+      // Ukryj formularz i pokaż stronę STAFF
+      document.getElementById('login-page').style.display = 'none';
+      document.getElementById('staff-page').style.display = 'block';
+    } else {
+      msg.style.color = "red";
+      msg.textContent = "❌ Błędny email lub hasło!";
+    }
+  }
 </script>
 
 </body>
