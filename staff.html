@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>System Staff - PKS Ujazd</title>
+  <style>
+    :root {
+      --yellow: #FFD700;
+      --bg: #ffffff;
+      --text: #000;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body { font-family: Arial, sans-serif; background: var(--bg); color: var(--text); }
+
+    /* --- Pasek górny --- */
+    .topbar {
+      width: 100%;
+      background-color: var(--yellow);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      font-weight: bold;
+      color: var(--text);
+    }
+
+    .brand { font-size: 16px; text-transform: uppercase; }
+
+    .tabs { display: flex; gap: 15px; }
+    .tab a { text-decoration: none; color: var(--text); }
+    .tab.active a { text-decoration: underline; }
+
+    .clock { font-variant-numeric: tabular-nums; }
+  </style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">PKS Ujazd</div>
+  <div class="tabs">
+    <div class="tab"><a href="index.html">Strona Główna</a></div>
+    <div class="tab active"><a href="staff.html">System Staff</a></div>
+  </div>
+  <div class="clock" id="clock">--:--:--</div>
+</header>
+
+<main style="padding:20px;">
+  <h1>System Staff</h1>
+  <p>To jest podstrona System Staff. Na razie ma taką samą zawartość jak strona główna.</p>
+</main>
+
+<script>
+  function updateClock() {
+    const now = new Date();
+    const time = now.toLocaleTimeString('pl-PL', { hour12: false });
+    document.getElementById('clock').textContent = time;
+  }
+  setInterval(updateClock, 1000);
+  updateClock();
+</script>
+
+</body>
+</html>
