@@ -9,6 +9,8 @@
       --yellow: #FFD700;
       --bg: #ffffff;
       --text: #000;
+      --box-bg: #FFF8DC; /* jasny żółty do ramek */
+      --box-border: #FFD700; /* intensywny żółty do obramowania */
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -35,7 +37,7 @@
 
     .clock { font-variant-numeric: tabular-nums; }
 
-    main { padding: 20px; max-width: 500px; margin: auto; text-align: center; }
+    main { padding: 20px; max-width: 700px; margin: auto; text-align: center; }
 
     h1 { margin-bottom: 20px; }
 
@@ -59,6 +61,38 @@
     }
 
     button:hover {
+      opacity: 0.9;
+    }
+
+    main img {
+      display: block;
+      width: 100%;
+      max-width: 400px;
+      margin: 10px auto;
+    }
+
+    .yellow-box {
+      background-color: var(--box-bg);
+      border: 2px solid var(--box-border);
+      border-radius: 8px;
+      padding: 15px;
+      margin: 15px 0;
+      text-align: left;
+      white-space: pre-line; /* zachowanie nowych linii */
+    }
+
+    .sheet-button {
+      display: inline-block;
+      margin-bottom: 20px;
+      background-color: var(--yellow);
+      color: var(--text);
+      text-decoration: none;
+      padding: 10px 15px;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+
+    .sheet-button:hover {
       opacity: 0.9;
     }
   </style>
@@ -88,8 +122,65 @@
 </main>
 
 <main id="staff-page" style="display:none;">
+  <a class="sheet-button" href="https://docs.google.com/spreadsheets/d/16ZNgMg6byNLRVMwp3qZkfV20g4YYcFaY8lCA5d3YaDA/edit?usp=sharing" target="_blank">Link do Arkusza Google</a>
+
   <h1>Strona STAFF</h1>
-  <p>Witaj w panelu systemu Staff!</p>
+
+  <div class="yellow-box">
+Ogłoszenie
+
+Przydziały 24.08.2025r.
+@PO | ♛ 𝐍𝐞𝐱𝐢𝐚𝐤 𝟏𝟓𝟑𝟏 ♛  252 Linia 3 Brygada 1
+@PO | matibmwmat 413 Linia 1 Brygada 1
+@HOD | Blueyexe 410 Linia 2 Brygada 1
+@NK | Gegolek (@gegolek999)  415 Linia 5 Brygada 1
+@K | yuho4x 253 Linia 6 Brygada 1
+@D | bjuti_warsia 254 Linia 2 Brygada S1 (ins do twojego pojazdu 254 116788751738319)
+@DO | Mateusz11478667 412 Lini 1 Brygada 2
+  </div>
+
+  <div class="yellow-box">
+Kody do pojazdów na 27.08.2025r.
+
+Kody do Pojazdów INS
+Autosan
+🟩 251-  85086862065908 Stalka @NK | Ziemniaczek 
+🟩 252-  94626806701894 - Stalka @PO | ♛ 𝐍𝐞𝐱𝐢𝐚𝐤 𝟏𝟓𝟑𝟏 ♛ 
+🟩 253- 114742989838668
+🟩 254-  103813735129228
+🟩 255-  128393198715249 Stalka - @Itzz_Mercedes 
+🟩 256- 85869386880835
+🟪 257 - 77101268308868 
+
+ZAZ
+🟩 410- 107863276553855
+🟩 411- 128980541343519 Stalka @K | AutosanFAN (@przemyskimkm) 
+🟩 412- 110676488004982 Stalka @DO | Mateusz11478667 
+🟩 413- 102478200630130 - @PO | matibmwmat 
+🟩 414- 126182197341221  - Stalka @PO | ♛ 𝐍𝐞𝐱𝐢𝐚𝐤 𝟏𝟓𝟑𝟏 ♛ 
+🟩 415- 128569566493834 Stalka @NK | Gegolek (@gegolek999) 
+🟩 416 - 113013083261882
+
+Pierdzik
+🟩 600-  101639796701805
+🟩601- 73002700517900 Stalka  - @PO | matibmwmat 
+🟩602- 131904852539064   Stalka - @OP | Mr_Axel 
+
+Mercedes
+🟩 405- 77353727181268
+
+Szkola Jazdy
+901 - 107791839448396
+
+Irisbus
+🟪 300 - 130361862032604
+🟪 301- 88174270334836
+
+Legenda:
+
+🟩 - Rework (zrobiony)
+🟪 - Autobus Szkolny 
+  </div>
 </main>
 
 <script>
@@ -111,7 +202,6 @@
       msg.style.color = "green";
       msg.textContent = "✅ Zalogowano pomyślnie!";
 
-      // Ukryj formularz i pokaż stronę STAFF
       document.getElementById('login-page').style.display = 'none';
       document.getElementById('staff-page').style.display = 'block';
     } else {
