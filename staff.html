@@ -9,15 +9,12 @@
       --yellow: #FFD700;
       --bg: #ffffff;
       --text: #000;
-      --box-bg: #FFF8DC; /* jasny żółty do ramek */
-      --box-border: #FFD700; /* intensywny żółty do obramowania */
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body { font-family: Arial, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
 
-    /* --- Pasek górny --- */
     .topbar {
       width: 100%;
       background-color: var(--yellow);
@@ -30,7 +27,6 @@
     }
 
     .brand { font-size: 16px; text-transform: uppercase; }
-
     .tabs { display: flex; gap: 15px; }
     .tab a { text-decoration: none; color: var(--text); }
     .tab.active a { text-decoration: underline; }
@@ -60,25 +56,18 @@
       cursor: pointer;
     }
 
-    button:hover {
-      opacity: 0.9;
-    }
+    button:hover { opacity: 0.9; }
 
-    main img {
+    img {
       display: block;
-      width: 100%;
-      max-width: 400px;
+      max-width: 100%;
       margin: 10px auto;
     }
 
-    .yellow-box {
-      background-color: var(--box-bg);
-      border: 2px solid var(--box-border);
-      border-radius: 8px;
-      padding: 15px;
-      margin: 15px 0;
+    .announcement {
       text-align: left;
-      white-space: pre-line; /* zachowanie nowych linii */
+      margin: 20px 0;
+      white-space: pre-line; /* zachowuje podziały w tekście */
     }
 
     .sheet-button {
@@ -92,9 +81,8 @@
       font-weight: bold;
     }
 
-    .sheet-button:hover {
-      opacity: 0.9;
-    }
+    .sheet-button:hover { opacity: 0.9; }
+
   </style>
 </head>
 <body>
@@ -121,12 +109,13 @@
   <p id="message" style="margin-top:15px; font-weight:bold;"></p>
 </main>
 
-<main id="staff-page" style="display:none;">
+<main id="staff-panel" style="display:none;">
   <a class="sheet-button" href="https://docs.google.com/spreadsheets/d/16ZNgMg6byNLRVMwp3qZkfV20g4YYcFaY8lCA5d3YaDA/edit?usp=sharing" target="_blank">Link do Arkusza Google</a>
 
   <h1>Strona STAFF</h1>
+  <p>Witaj w panelu systemu Staff!</p>
 
-  <div class="yellow-box">
+  <div class="announcement">
 Ogłoszenie
 
 Przydziały 24.08.2025r.
@@ -139,7 +128,7 @@ Przydziały 24.08.2025r.
 @DO | Mateusz11478667 412 Lini 1 Brygada 2
   </div>
 
-  <div class="yellow-box">
+  <div class="announcement">
 Kody do pojazdów na 27.08.2025r.
 
 Kody do Pojazdów INS
@@ -201,9 +190,8 @@ Legenda:
     if (email === "staff@pks-ujazd.pl" && pass === "ostaffu133") {
       msg.style.color = "green";
       msg.textContent = "✅ Zalogowano pomyślnie!";
-
       document.getElementById('login-page').style.display = 'none';
-      document.getElementById('staff-page').style.display = 'block';
+      document.getElementById('staff-panel').style.display = 'block';
     } else {
       msg.style.color = "red";
       msg.textContent = "❌ Błędny email lub hasło!";
