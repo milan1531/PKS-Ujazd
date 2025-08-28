@@ -40,7 +40,17 @@
 
     .clock { font-weight: bold; }
 
-    main { padding: 20px; max-width: 700px; margin: auto; text-align: left; }
+    main { padding: 20px; max-width: 900px; margin: auto; text-align: center; }
+
+    .lines { margin: 20px 0; display: flex; justify-content: center; gap: 15px; }
+    .line { padding: 10px 20px; background: var(--highlight); color: #fff; font-weight: bold; cursor: pointer; border-radius: 5px; transition: background 0.3s; }
+    .line:hover { background: var(--yellow); color: var(--text); }
+
+    #map { max-width: 100%; margin: 20px auto; border-radius: 10px; }
+
+    .schedule img { max-width: 100%; margin: 10px 0; border-radius: 10px; }
+
+    .error { font-size: 24px; color: red; margin-top: 20px; }
   </style>
 </head>
 <body>
@@ -57,20 +67,66 @@
 </header>
 
 <main>
-  <h1 style="text-align:center; color:var(--highlight);">Mapa PKS Ujazd</h1>
-  <p style="text-align:center;">Tutaj wkrótce pojawi się mapa oraz rozkłady jazdy.</p>
+  <div class="lines">
+    <div class="line" onclick="showLine(1)">Linia 1</div>
+    <div class="line" onclick="showLine(2)">Linia 2</div>
+    <div class="line" onclick="showLine(3)">Linia 3</div>
+    <div class="line" onclick="showLine(5)">Linia 5</div>
+    <div class="line" onclick="showLine(6)">Linia 6</div>
+  </div>
+
+  <img id="map" src="mapa.png" alt="Mapa">
+
+  <div class="schedule" id="schedule"></div>
 </main>
 
 <script>
   function updateClock() {
     const now = new Date();
-    const hours = String(now.getHours()).padStart(2, '0');
-    const minutes = String(now.getMinutes()).padStart(2, '0');
-    const seconds = String(now.getSeconds()).padStart(2, '0');
+    const hours = String(now.getHours()).padStart(2,'0');
+    const minutes = String(now.getMinutes()).padStart(2,'0');
+    const seconds = String(now.getSeconds()).padStart(2,'0');
     document.getElementById('clock').textContent = hours + ':' + minutes + ':' + seconds;
   }
   setInterval(updateClock, 1000);
   updateClock();
+
+  function showLine(line) {
+    const scheduleDiv = document.getElementById('schedule');
+    scheduleDiv.innerHTML = ''; // czyścimy poprzedni content
+
+    switch(line) {
+      case 1:
+        scheduleDiv.innerHTML = `
+          <img src="rozklad11.png" alt="Rozkład 1-1">
+          <img src="rozklad12.png" alt="Rozkład 1-2">
+        `;
+        break;
+      case 2:
+        scheduleDiv.innerHTML = `
+          <img src="rozklad21.png" alt="Rozkład 2-1">
+          <img src="rozklad22.png" alt="Rozkład 2-2">
+        `;
+        break;
+      case 3:
+        scheduleDiv.innerHTML = `
+          <div class="error">Przerwa Techniczna<br>Kod błędu - 122</div>
+        `;
+        break;
+      case 5:
+        scheduleDiv.innerHTML = `
+          <img src="rozklad52.png" alt="Rozkład 5-2">
+          <img src="rozklad51.png" alt="Rozkład 5-1">
+        `;
+        break;
+      case 6:
+        scheduleDiv.innerHTML = `
+          <img src="rozklad61.png" alt="Rozkład 6-1">
+          <img src="rozklad62.png" alt="Rozkład 6-2">
+        `;
+        break;
+    }
+  }
 </script>
 
 </body>
