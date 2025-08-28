@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PKS Ujazd - Mapa</title>
+  <style>
+    :root {
+      --yellow: #FFD700;
+      --bg: #ffffff;
+      --text: #000;
+      --highlight: #ff4500;
+      --link: #1e90ff;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body { 
+      font-family: 'Arial', sans-serif; 
+      background: var(--bg); 
+      color: var(--text); 
+      line-height: 1.6; 
+    }
+
+    .topbar {
+      width: 100%;
+      background-color: var(--yellow);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      font-weight: bold;
+      color: var(--text);
+    }
+
+    .tabs { display: flex; gap: 15px; }
+    .tab a { text-decoration: none; color: var(--text); transition: color 0.3s; }
+    .tab a:hover { color: var(--highlight); }
+    .tab.active a { text-decoration: underline; }
+
+    .clock { font-weight: bold; }
+
+    main { padding: 20px; max-width: 700px; margin: auto; text-align: left; }
+  </style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">PKS Ujazd</div>
+  <div class="tabs">
+    <div class="tab"><a href="index.html">Strona Główna</a></div>
+    <div class="tab"><a href="staff.html">System Staff</a></div>
+    <div class="tab"><a href="rekrutacja.html">Biuro Rekrutacji</a></div>
+    <div class="tab active"><a href="mapa.html">Rozkłady PKS / Mapa</a></div>
+  </div>
+  <div class="clock" id="clock"></div>
+</header>
+
+<main>
+  <h1 style="text-align:center; color:var(--highlight);">Mapa PKS Ujazd</h1>
+  <p style="text-align:center;">Tutaj wkrótce pojawi się mapa oraz rozkłady jazdy.</p>
+</main>
+
+<script>
+  function updateClock() {
+    const now = new Date();
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    const seconds = String(now.getSeconds()).padStart(2, '0');
+    document.getElementById('clock').textContent = hours + ':' + minutes + ':' + seconds;
+  }
+  setInterval(updateClock, 1000);
+  updateClock();
+</script>
+
+</body>
+</html>
