@@ -60,7 +60,7 @@
   <div class="tabs">
     <div class="tab"><a href="index.html">Strona Główna</a></div>
     <div class="tab"><a href="staff.html">System Staff</a></div>
-    <div class="tab"><a href="rekrutacja.html">Biuro Rekrutacji</a></div>
+    <div class="tab"><a href="rekrutacja.html">Bilet miesięczny</a></div>
     <div class="tab active"><a href="mapa.html">Rozkłady PKS / Mapa</a></div>
   </div>
   <div class="clock" id="clock"></div>
@@ -110,7 +110,7 @@
         break;
       case 3:
         scheduleDiv.innerHTML = `
-          <div class="error">Przerwa Techniczna<br>Kod błędu - 122</div>
+          <div class="error">Brak lini lub brak dostępu do pliku<br>Kod błędu - 132, 112</div>
         `;
         break;
       case 5:
@@ -131,3 +131,4 @@
 
 </body>
 </html>
+
